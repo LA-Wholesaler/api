@@ -19,10 +19,8 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
       - run: ls & pwd
-      - run: cp dev.env .env
+      #- run: cp dev.env .env
       - run: yarn install
-      - run: mkdir logs
-
       - save_cache:
           paths:
             - node_modules
