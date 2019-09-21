@@ -9,7 +9,6 @@ defaults: &defaults
   working_directory: ~/repo/api
   docker:
     - image: circleci/node:10.16.0
-    - image: circleci/mongo:3.4
 
 jobs:
   setup:
