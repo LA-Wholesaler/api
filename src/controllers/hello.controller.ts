@@ -12,9 +12,9 @@ const HELLO_RESPONSE: ResponseObject = {
         type: 'object',
         properties: {
           data: {
-            type: 'string'
-          }
-        }
+            type: 'string',
+          },
+        },
       },
     },
   },
@@ -35,7 +35,7 @@ export class HelloController {
   ping(): object {
     // Reply with a greeting, the current time, the url, and request headers
     return {
-      data: 'hello world'
-    }
+      data: 'hello world',
+    };
   }
 }
