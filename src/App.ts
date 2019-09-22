@@ -1,6 +1,7 @@
 import express, {Application} from 'express';
 import {Connection, Model} from 'mongoose'
 import Models from './models'
+import Controllers from './controllers'
 
 interface SettingsInterface {
   port: number
@@ -14,15 +15,17 @@ export default class App {
     port: 3000
   }
   models: any
+  controllers: any
 
   constructor (mongooseConnection: Connection) {
     this.expressApp = express()
     this.db = mongooseConnection
     this.models = Models(mongooseConnection)
+    this.controllers = Controllers(this.models)
   }
 
   async boot () {
-    console.log('booting', this.models)
+    console.log('booting', this.models, this.controllers)
 
   }
 
