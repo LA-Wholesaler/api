@@ -1,4 +1,4 @@
-import {Request, RestBindings, get, ResponseObject} from '@loopback/rest';
+import {Request, RestBindings, get, ResponseObject, api, param} from '@loopback/rest';
 import {inject} from '@loopback/context';
 
 /**
@@ -23,19 +23,23 @@ const HELLO_RESPONSE: ResponseObject = {
 /**
  * A simple controller to bounce back http requests
  */
+@api({
+  basePath: '/hello',
+  paths: {}
+})
 export class HelloController {
   constructor(@inject(RestBindings.Http.REQUEST) private req: Request) {}
 
   // Map to `GET /ping`
-  @get('/hello', {
+  @get('/', {
     responses: {
       '200': HELLO_RESPONSE,
     },
   })
-  ping(): object {
+  ping(@param.query.string('name') name: string): object {
     // Reply with a greeting, the current time, the url, and request headers
     return {
-      data: 'hello world',
+      data: `hello ${name}`,
     };
   }
 }

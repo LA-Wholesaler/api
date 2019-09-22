@@ -15,7 +15,8 @@ describe('HelloController', () => {
   });
 
   it('invokes GET /hello', async () => {
-    const res = await client.get('/hello').expect(200);
-    expect(res.body.data).to.equal('hello world');
+    const name = 'me';
+    const res = await client.get(`/hello?name=${name}`).expect(200);
+    expect(res.body.data).to.equal(`hello ${name}`);
   });
 });
