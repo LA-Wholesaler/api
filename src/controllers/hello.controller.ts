@@ -1,4 +1,11 @@
-import {Request, RestBindings, get, ResponseObject, api, param} from '@loopback/rest';
+import {
+  Request,
+  RestBindings,
+  get,
+  ResponseObject,
+  api,
+  param,
+} from '@loopback/rest';
 import {inject} from '@loopback/context';
 
 /**
@@ -25,7 +32,7 @@ const HELLO_RESPONSE: ResponseObject = {
  */
 @api({
   basePath: '/hello',
-  paths: {}
+  paths: {},
 })
 export class HelloController {
   constructor(@inject(RestBindings.Http.REQUEST) private req: Request) {}
