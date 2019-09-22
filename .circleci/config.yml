@@ -94,3 +94,9 @@ workflows:
       - test:
           requires:
             - build
+      - dockerhub_push_dev:
+          requires:
+            - build
+          filters:
+            branches:
+              only: dev
