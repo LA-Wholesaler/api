@@ -1,7 +1,10 @@
 import App from './App'
+import mongoose from 'mongoose'
 
 export async function main() {
-  const app = new App();
+  const mongooseConnection = mongoose.createConnection()
+
+  const app = new App(mongooseConnection);
   await app.boot();
   await app.start();
 
