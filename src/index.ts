@@ -1,16 +1,15 @@
-import {ApiApplication} from './application';
-import {ApplicationConfig} from '@loopback/core';
+import App from './App'
 
-export {ApiApplication};
-
-export async function main(options: ApplicationConfig = {}) {
-  const app = new ApiApplication(options);
+export async function main() {
+  const app = new App();
   await app.boot();
   await app.start();
 
-  const url = app.restServer.url;
+  const url = app.url;
   console.log(`Server is running at ${url}`);
   console.log(`Try ${url}/ping`);
 
   return app;
 }
+
+main()
